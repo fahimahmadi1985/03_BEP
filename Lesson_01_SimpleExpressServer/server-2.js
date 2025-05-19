@@ -45,7 +45,7 @@ app.get("/reviews", (req,res)=>{
     }
 })
 
-// curl localhost:3000/reviews -X POST --data "movie=Matrix&review=**"
+// curl http://localhost:3000/reviews -X POST --data "movie=Matrix&review=**"
 app.post("/reviews", (req,res)=>{
     console.log("post request received");
     const movie = req.body.movie;
