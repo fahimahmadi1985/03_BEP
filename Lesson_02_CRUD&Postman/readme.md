@@ -103,3 +103,32 @@
 
 - Very very commonly APIs respond with the same type of data they take in
     - We'll also now start to use JSON basically for all data exchange
+
+
+### HTTP Status codes
+
+- What does "Error 404" mean?
+
+- The 404 is an HTTP status code
+    - The HTTP protocol defines a lot of status codes
+    - They are used to communicate the result of a request
+
+- The status code is a number
+    - The first digit defines the general category
+    - The next two digits define the specific status
+
+- Some common status codes:
+    - 200 OK
+    - 201 Created
+    - 204 No Content
+    - 400 Bad Request
+    - 401 Unauthorized
+    - 403 Forbidden
+    - 404 Not Found
+    - 405 Method Not Allowed
+    - 500 Internal Server Error
+
+- Using correct status codes is important
+    - It helps the client understand what happened
+    - It helps the client know what to do next
+    - It's good practice for REST APIs
