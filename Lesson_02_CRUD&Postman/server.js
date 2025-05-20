@@ -8,6 +8,9 @@ app.use(express.urlencoded({ extended: true }));
 let guestbook = [
   { id: 0, author: "Faenor", message: "Hello, World!" },
   { id: 1, author: "john", message: "Hello, World!!!!!!!!!!!" },
+  { id: 2, author: "jane2", message: "Hey2" },
+  { id: 3, author: "bob", message: "Hello" },
+  
 ];
 
 app.get("/posts", (req, res) => {
@@ -35,9 +38,8 @@ app.put("/posts/:id", (req, res) => {
 
   const editedPost = { id: id, author: name, message: message };
 
-  guestbook = guestbook.filter((x) => x.id !== id);
-  guestbook.push(editedPost);
-
+  guestbook = guestbook.map((x) => x.id === id ? editedPost : x );
+ 
   res.json(guestbook);
 });
 
