@@ -38,4 +38,9 @@ app.post("/user/login", (req, res) => {
   res.send("hi from POST /user/login");
 });
 
-app.listen(8000, () => console.log("server is running on port 8000"));
+app.use((req,res,next)=>{
+  console.log("middleware after all endpoints")
+  res.status(404).send("page not found")
+})
+
+app.listen(5000, () => console.log("server is running on port 5000"));
