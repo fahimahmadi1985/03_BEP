@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <!--
+        To anyone reading this!
+
+        This is an **example implementation** meant as a reference.
+        Any real implementation should be more robust and completed.
+        Use this to solve issues in your own solution,
+        but make yours more complete and finished.
+       -->
+
+    <head>
+        <meta charset="UTF-8">
+
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 20px;
+            }
+
+            table.posts {
+                width: 100%;
+                border-collapse: collapse;
+                margin-bottom: 20px;
+            }
+
+            table.posts th,
+            table.posts td {
+                border: 1px solid #ddd;
+                padding: 3px;
+                text-align: left;
+            }
+
+            table.posts th {
+                background-color: #f2f2f2;
+            }
+
+            form {
+                margin-top: 20px;
+            }
+
+            form label {
+                display: block;
+                margin-bottom: 2px;
+            }
+
+            form input[type="text"],
+            form textarea {
+                width: 100%;
+                padding: 3px;
+                margin-bottom: 8px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+            }
+
+            form input[type="submit"], button {
+                background-color: #4CAF50;
+                color: white;
+                padding: 3px 6px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+
+    <body>
+        <table class="posts">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Message</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Posts will be added here -->
+            </tbody>
+        </table>
+
+        <!-- I wonder if we could send this without JS, using just HTML... -->
+        <form id="guestbook-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <br>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+            <br>
+            <input type="submit" value="Add post" />
+        </form>
+
+        <script>
+            const tbody = document.querySelector('.posts tbody');
+
+            // Creating a new post
+            document.getElementById('guestbook-form').addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                const name = document.getElementById('name').value;
+                const message = document.getElementById('message').value;
+
+                fetch('/api/guestbook', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ name, message })
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            // reload page
+                            location.reload();
+                        }
+                    })
+            });
+
+            // Loading posts when the page loads
+            let counterOffset = 0;
+            fetch('/api/guestbook')
+                .then(response => response.json())
+                .then(data => {
+                    data.posts.forEach(post => {
+                        const tr = document.createElement('tr');
+                        tr.innerHTML = `<td>${post.name}</td><td>${post.message}</td>`;
+                        tbody.appendChild(tr);
+                    });
+
+                    if (data.total > data.posts.length) {
+                        counterOffset = data.posts.length;
+                        const tr = document.createElement('tr');
+                        tr.innerHTML = `<td colspan="2"><button>Load more...</button></td>`;
+                        tbody.appendChild(tr);
+                    }
+                });
+
+            // Loading more posts when the button is clicked
+            document.addEventListener("click", function (e) {
+                if (e.target.tagName === 'BUTTON') {
+                    fetch('/api/guestbook?offset=' + counterOffset)
+                        .then(response => response.json())
+                        .then(data => {
+                            document.querySelectorAll('.posts tbody tr:last-child')[0].remove();
+
+                            data.posts.forEach(post => {
+                                const tr = document.createElement('tr');
+                                tr.innerHTML = `<td>${post.name}</td><td>${post.message}</td>`;
+                                tbody.appendChild(tr);
+                            });
+
+                            if (data.total > document.querySelectorAll('.posts tbody tr').length) {
+                                counterOffset += data.posts.length;
+                                const tr = document.createElement('tr');
+                                tr.innerHTML = `<td colspan="2"><button>Load more...</button></td>`;
+                                tbody.appendChild(tr);
+                            }
+                        });
+                }
+            });
+        </script>
+    </body>
+
+</html>
