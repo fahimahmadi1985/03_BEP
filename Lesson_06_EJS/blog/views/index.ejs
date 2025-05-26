@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("head") %>
+  <body>
+    <%- include("header") %>
+    <ul>
+      <% posts.forEach(x => {%>
+      <li>
+        <h2> <%= x.title %> </h2>
+        <h3> <%= x.authorName %></h3>
+        <a href="/post/<%= x.id %>">read more</a>
+      </li>
+      <% }) %>
+    </ul>
+  </body>
+</html>

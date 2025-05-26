@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "authorName": "Jacques Doe",
+        "title": "The Evolution of Guitar Riffs",
+        "content": "<h1>The Evolution of Guitar Riffs</h1>\n<p>From the bluesy simplicity of early rock 'n' roll to the complex and layered sounds of modern metal, the guitar riff has undergone a remarkable evolution...</p>"
+    },
+    {
+        "id": 2,
+        "authorName": "Jane Doe",
+        "title": "The Art of the Drum Solo",
+        "content": "<h1>The Art of the Drum Solo</h1>\n<p>Drum solos have been a staple of rock and roll music since its inception. From the thunderous beats of John Bonham to the intricate rhythms of Neil Peart, drummers have long been celebrated for their solo performances...</p>"
+    },
+    {
+        "id": 3,
+        "authorName": "Ioannis Doe",
+        "title": "The Power of the Bassline",
+        "content": "<h1>The Power of the Bassline</h1>\n<p>While often overshadowed by the flashier guitar and drum solos, the bassline is a crucial element of any rock song. From the driving basslines of Motown to the funky grooves of disco, the bass has played a key role in shaping the sound of popular music...</p>"
+    },
+    {
+        "id": 4,
+        "authorName": "Alice Doe",
+        "title": "The Influence of Jazz on Rock Music",
+        "content": "<h1>The Influence of Jazz on Rock Music</h1>\n<p>From the syncopated rhythms of swing to the improvisational solos of bebop, jazz has had a profound impact on the development of rock music. Artists like Jimi Hendrix and Frank Zappa drew inspiration from jazz musicians like Charlie Parker and John Coltrane, incorporating elements of jazz into their own unique styles...</p>"
+    },
+    {
+        "id": 5,
+        "authorName": "Yog Doe",
+        "title": "The Rise of Electronic Music",
+        "content": "<h1>The Rise of Electronic Music</h1>\n<p>From the experimental sounds of Kraftwerk to the chart-topping hits of Daft Punk, electronic music has come a long way since its inception. With the advent of synthesizers and drum machines, artists have been able to create entirely new sounds and push the boundaries of what is possible in music...</p>"
+    }
+]
