@@ -1,11 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    home page
-</body>
+  </head>
+  <body>
+    <h1>Welcome to my app</h1>
+
+    <% posts.forEach(x=> { %>
+    <div style="border: 1px solid black; padding: 10px">
+      <h2><%= x.title %></h2>
+      <h3><%= x.author %></h3>
+      <a href="/post/<%= x.id %>">Read more >>></a>
+    </div>
+    <% }) %>
+  </body>
 </html>
