@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "@types/express": "^5.0.2",
+    "concurrently": "^9.1.2",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "sass": "^1.89.0",
+    "tsc": "^2.0.4"
+  }
+}
