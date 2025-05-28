@@ -18,12 +18,16 @@ app.get("/post", (req,res)=>{
     res.render("post-create")
 })
 
+app.get("/404",(req,res)=>{
+    res.render("404")
+})
+
 app.get("/post/:id", (req,res)=>{
     const id = Number(req.params.id);
 
     const post = posts.find(x=> x.id === id);
     if(!post){
-      return  res.status(404).render("404", {msg: "id doesnt exist"})
+      return  res.status(404).redirect("/404")
     }
     res.render("post", {post: post})
 })
@@ -33,13 +37,18 @@ app.get("/post/:id", (req,res)=>{
     console.log(req.body)
     const {title, author, content} = req.body;
     const newID = posts.length+1;
+
+    if(!title || !author || !content){
+       return res.redirect("/404")
+    }
+
     const newPost = {id: newID ,title, author, content}
 
     posts.push(newPost)
 
     write(posts)
 
-    res.redirect(`/posts/${newID}`)
+    res.redirect(`/post/${newID}`)
 
  })
 // app.delete()

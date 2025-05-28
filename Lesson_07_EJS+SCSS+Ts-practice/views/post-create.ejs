@@ -1,29 +1,48 @@
 <!DOCTYPE html>
 <html>
-<body>
+    <%- include("./partials/head.ejs") %>
+  <body>
+    <%- include("./partials/header.ejs") %>
 
-    <form class="post-create" action="/api/post" method="POST">
-        <div>
-            <label for="author">Author:</label>
-            <input type="text" id="author" name="author">
-        </div>
-        <div>
-            <label for="title">Title:</label>
-            <input type="text" id="title" name="title">
-        </div>
-        <div>
-            <label for="content">Content:</label>
-            <textarea id="content" name="content"></textarea>
-        </div>
-        <button type="submit">Create Post</button>
+    <form class="post-create">
+      <div>
+        <label for="author">Author:</label>
+        <input type="text" id="author" name="author" />
+      </div>
+      <div>
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" />
+      </div>
+      <div>
+        <label for="content">Content:</label>
+        <textarea id="content" name="content"></textarea>
+      </div>
+      <button type="submit">Create Post</button>
     </form>
 
     <script>
-        const form = document.querySelector("form")
-        form.addEventListener("submit", (e)=> {
-            e.preventDefault();
-        } )
-    </script>
+      const form = document.querySelector("form");
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+       
+        const body = {
+            title: e.target.title.value,
+            author: e.target.author.value,
+            content: e.target.content.value,
+          }
 
-</body>
+          console.log(body)
+
+        fetch("/api/post", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(body),
+        }).then((res) => {
+          console.log(res.status);
+        });
+      });
+    </script>
+  </body>
 </html>
