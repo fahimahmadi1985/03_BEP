@@ -38,3 +38,4 @@
     - When the project runs, SCSS and TypeScript is compiled with bun
     - This would be a bit more complex with Node and NPM
 
+### start with: `bun start`

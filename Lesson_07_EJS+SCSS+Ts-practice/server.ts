@@ -5,12 +5,15 @@ const app = express();
 
 app.use(express.json())
 app.use(express.urlencoded());
+app.use( "/public", express.static("public"))
 
 let posts = read();
 
 app.set("view engine","ejs");
 
+
 app.get("/", (req,res)=>{
+    // const latest = posts
     res.render("index", {posts: posts})
 })
 

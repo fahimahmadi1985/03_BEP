@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
-    <%- include("./partials/head.ejs") %>
+  <%- include("./partials/head.ejs") %>
   <body>
     <%- include("./partials/header.ejs") %>
 
+    <!-- if you want to let the form do the request for you automatically you need to add these 2 attributes and no need for the script -->
+    <!-- <form class="post-create" action="/api/post" method="POST" > -->
     <form class="post-create">
       <div>
         <label for="author">Author:</label>
@@ -20,29 +22,5 @@
       <button type="submit">Create Post</button>
     </form>
 
-    <script>
-      const form = document.querySelector("form");
-      form.addEventListener("submit", (e) => {
-        e.preventDefault();
-       
-        const body = {
-            title: e.target.title.value,
-            author: e.target.author.value,
-            content: e.target.content.value,
-          }
-
-          console.log(body)
-
-        fetch("/api/post", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(body),
-        }).then((res) => {
-          console.log(res.status);
-        });
-      });
-    </script>
   </body>
 </html>

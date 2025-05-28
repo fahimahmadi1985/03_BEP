@@ -1,17 +1,18 @@
-<!DOCTYPE html>
+
 <html lang="en">
+  <%- include("partials/head") %>
   
   <body>
-    <%- include("./partials/header.ejs") %>
+    <%- include("partials/header") %>
 
     <h1>Welcome to our Bullet Board app</h1>
 
     <% posts.forEach(x=> { %>
-    <div style="border: 1px solid black; padding: 10px">
+    <section>
       <h2><%= x.title %></h2>
       <h3><%= x.author %></h3>
       <a href="/post/<%= x.id %>">Read more >>></a>
-    </div>
+    </section>
     <% }) %>
   </body>
 </html>

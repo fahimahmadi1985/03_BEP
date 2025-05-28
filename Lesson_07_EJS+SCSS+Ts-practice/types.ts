@@ -4,3 +4,9 @@ export type Post = {
         title: string,
         content: string   
     }
+
+export  type FormReqBody = {
+        title: string,
+        author: string,
+        content: string
+    }
