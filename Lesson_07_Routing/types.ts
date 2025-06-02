@@ -3,3 +3,9 @@ export type Product = {
     name: string,
     price: number
 }
+
+export type Feedback = {
+    id: number,
+    author: string,
+    feedbackText: string
+}
