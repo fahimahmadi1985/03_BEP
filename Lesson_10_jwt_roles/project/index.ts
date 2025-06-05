@@ -1,15 +1,22 @@
 import express from 'express';
 import type {Express, Request, Response, NextFunction} from 'express';
 import usersRouter from './routers/users';
+import productsRouter from './routers/products';
+import cookieParser from 'cookie-parser';
 
 const app:Express = express();
 
 // middleware
-app.use(express.json()) // to extract json data from request body
-
+app.use(express.json()) // to extract json data
+app.use(cookieParser());
 
 // routers
 app.use("/users", usersRouter );
+app.use("/products", productsRouter );
+
+
+
+
 
 
 
