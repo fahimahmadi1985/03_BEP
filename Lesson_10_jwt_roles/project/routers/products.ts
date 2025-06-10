@@ -7,4 +7,5 @@ const router = Router();
 // define routes
 router.get('/list', authenticate, getProducts);
 
+
 export default router;
